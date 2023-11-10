@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/styles.css">
     <title>SQL Injection Demo</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> -->
 </head>
 <body>
     <div class="container">
-        <h1>SQL Injection Demo</h1>
+        <h1>SQL Injection</h1>
         <form action="/submit" method="post">
-            <input type="text" name="jmbag" placeholder="Unesite JMBAG" required>
-            <input type="checkbox" name="vulnerabilityCheckbox" <% if (vulnerable) { %>checked<% } %>> Stranica ranjiva na SQL injection
-            <button type="submit">Submit</button>
+            <input type="text" name="jmbag" placeholder="Unesite JMBAG" required><br>
+            <label>
+                <input type="checkbox" name="vulnerabilityCheckbox" <% if (vulnerable) { %>checked<% } %>> 
+                Stranica ranjiva na SQL injection
+            </label><br>
+            <button type="submit"><i class="fas fa-search"></i> Submit</button>
         </form>
     </div>
+    
 </body>
 </html>
