@@ -53,11 +53,12 @@ app.post('/submit', (req, res) => {
     vulnerable = vulnerabilityCheckbox === 'on';
 
     if (vulnerable && isSqlInjection(jmbag)) {
-        res.send(`SQL Injection detected. Data: ${JSON.stringify(studentData)}`);
+        res.render('results', {studentData: studentData })
     } else if (!vulnerable && isSqlInjection(jmbag)) {
-        res.send(`<script>alert("NAPAD DETEKTIRAN");</script>`);
+        res.send(`<script>alert("NAPAD DETEKTIRAN I SPRIJEČEN!");</script>`);
     } else if (studentData[jmbag]) {
-        res.send(`Rezultat za JMBAG ${jmbag}: ${studentData[jmbag]}`);
+        res.render('results', {studentData: {[jmbag]: studentData[jmbag]}})
+        // res.send(`Rezultat za JMBAG ${jmbag}: ${studentData[jmbag]}`);
     } else if (jmbag) {
         res.send("Sori, taj student nije pisao ispit");
     } else {

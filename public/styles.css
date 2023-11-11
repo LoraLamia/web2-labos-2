@@ -62,3 +62,22 @@ input[type="text"]:focus, button:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     outline: none;
 }
+
+.instructions {
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-align: left;
+}
+
+.instructions h2 {
+    color: #007bff;
+}
+
+.instructions ol {
+    margin-left: 20px;
+}

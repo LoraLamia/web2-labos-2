@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/styles2.css">
+    <title>SQL Injection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Output</h1>
+        <table>
+            <tr>
+                <th>JMBAG</th>
+                <th>Score</th>
+            </tr>
+            <% for (var jmbag in studentData) { %>
+                <tr>
+                    <td><%= jmbag %></td>
+                    <td><%= studentData[jmbag] %></td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+</body>
+</html>
