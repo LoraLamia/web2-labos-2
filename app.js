@@ -6,9 +6,43 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-let vulnerable = false;
+function isSqlInjection(input) {
+    const cleanInput = input.replace(/\s+/g, '').toLowerCase();
+    const tautology = [
+        "'or''='",             
+        "'or'1'='1",           
+        "1=1",                 
+        "'='",                 
+        "1<>2",                // nije tautologija, ali često se koristi
+        "'or'1=1",             
+        "'or''='or'",          
+        "x=x",                 
+        "'x'='x'",             
+        "a=a",                 
+        "'a'='a'",             
+        "'or'x='x'",           
+        "'or'a='a'",           
+        "''=''",               
+        "true=true",           
+        "false=false",         
+        "'or'true",            
+        "'or'true='true'",     
+        "'or'false='false'",      
+    ];
 
-const { studentData, isSqlInjection } = require('./data');
+    return tautology.some(pattern => cleanInput.includes(pattern));
+}
+
+const studentData = {
+    "12345678": 56,
+    "12345679": 43,
+    "12345676": 80,
+    "12345675": 40,
+    "12345674": 12,
+    "12345673": 92
+}
+
+let vulnerable = false;
 
 app.get('/', (req, res) => {
     res.render('home', { vulnerable });
